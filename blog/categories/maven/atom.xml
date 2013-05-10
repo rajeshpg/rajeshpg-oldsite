@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: maven | me.thoughts.map(_ => blog)]]></title>
+  <link href="http://rajeshpg.github.io/blog/categories/maven/atom.xml" rel="self"/>
+  <link href="http://rajeshpg.github.io/"/>
+  <updated>2013-05-10T16:02:03+05:30</updated>
+  <id>http://rajeshpg.github.io/</id>
+  <author>
+    <name><![CDATA[Rajesh Pitty]]></name>
+    <email><![CDATA[rajesh@rajeshpg.com]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Creating Custom Maven Archetype]]></title>
+    <link href="http://rajeshpg.github.io/blog/2013/01/25/creating-custom-maven-archetype/"/>
+    <updated>2013-01-25T12:29:00+05:30</updated>
+    <id>http://rajeshpg.github.io/blog/2013/01/25/creating-custom-maven-archetype</id>
+    <content type="html"><![CDATA[<p><a href="http://maven.apache.org/">Maven</a> makes it easy to create a project from a skeleton using the archetypes. But most of the time many of the archetype does not work out of the box.</p>
+
+<p>Having a skeleton project with most of the default configurations always comes in handy. It saves time creating/writing configuration files for Spring, Hibernate&hellip; etc.</p>
+
+<p>How about creating an archetype for our project and have it in our local Maven repository or publish it in public repository or in github ?</p>
+
+<p>[grab your favourite beverage, this is a little long post.]</p>
+
+<!-- more -->
+
+
+<p>Lets create an archetype for an existing project that i created to learn <a href="http://liftweb.org">liftweb</a>.</p>
+
+<p>To create an archetype from an existing project we have to run the following command in the folder where our <code>pom.xml</code> is.</p>
+
+<p><img class="right" src="/images/create-maven-archetype/maven-generated-folders.png" width="300" height="425" title="Maven generated folders" ></p>
+
+<pre><code>mvn generate:create-from-project  
+</code></pre>
+
+<p>The maven command creates the archetype source in <code>app_folder/target/generated-sources/archetype</code> as shown &mdash;&gt;</p>
+
+<p>The archetype folder contains a <code>pom.xml</code>(shown below) for the archetype and the following folders inside <code>src/main/resources</code> folder.</p>
+
+<ul>
+<li><code>archetype-resources</code> containing the entire package of the project
+
+<ul>
+<li>the root main package <code>src/main/scala</code> containing core packages <code>comet, snippet, model...</code>, and other folders <code>src/main/webapp</code> and <code>src/main/resources</code></li>
+<li>the root test package <code>src/main/test</code></li>
+<li><code>pom.xml</code> &ndash; containing dependency details for the project to be created out of this archetype (not for the archetype).</li>
+</ul>
+</li>
+<li><code>META-INF/maven</code> containing <code>archetype-metadata.xml</code> that has project folder structure details and folder inclusion/exclusion filters.</li>
+</ul>
+
+
+<p>To create a proper archetype, we should make few changes in the directory structure, so it is good to copy the src and target folders and the pom.xml to another folder liftweb-archetype-blank.</p>
+
+<p><img class="left" src="/images/create-maven-archetype/maven-archetype-blank-1.png" width="260" height="210"></p>
+
+<h5>Step 1.</h5>
+
+<p>Move core package <code>(comet, snippet, model)</code> out of the root package <code>(com.appname)</code> to the src folder <code>(src/main/scala)</code> as shown in the left image.</p>
+
+<p>This step is required so that when we use the archetype to create a new project, maven will copy the core package in to custom root package that we specify in groupid <code>(com.anotherapp)</code>.</p>
+
+<h5>Step 2.</h5>
+
+<p>Edit <code>archetype-metadata.xml</code> located in <code>META-INF/maven</code> folder.<br/>
+Here is the xml created by maven for this project.</p>
+
+<p><div><script src='https://gist.github.com/4620148.js'></script>
+<noscript><pre><code></code></pre></noscript></div>
+</p>
+
+<p>and here is the modified xml.</p>
+
+<p>The attribute <code>packaged="true"</code> in <code>fileset</code> tag containing <code>src/main/scala/</code> directory entry tells maven to copy the core package <code>(comet, snippet, model)</code> in to root package <code>(com.anotherapp)</code> while creating a project.</p>
+
+<p>The exclusion filter for bootstrap folder in line number 12</p>
+
+<pre><code>  &lt;excludes&gt;
+    &lt;exclude&gt;bootstrap/**&lt;/exclude&gt;
+  &lt;/excludes&gt;
+</code></pre>
+
+<p>instructs maven not to copy bootstrap folder in to the core package as per liftweb package structure requirements.</p>
+
+<p>The inclusion filter in line number 20</p>
+
+<pre><code>  &lt;includes&gt;
+    &lt;include&gt;bootstrap/**/*.scala&lt;/include&gt;
+  &lt;/includes&gt;
+</code></pre>
+
+<p>instructs maven to retain the bootstrap folder in src/main/scala as per liftweb convention.
+<div><script src='https://gist.github.com/4620589.js'></script>
+<noscript><pre><code></code></pre></noscript></div>
+</p>
+
+<p>pom.xml for our archetype created by maven is</p>
+
+<p><div><script src='https://gist.github.com/4621304.js'></script>
+<noscript><pre><code></code></pre></noscript></div>
+</p>
+
+<p>we are done with our archetype and lets' install it in our local repository.</p>
+
+<pre><code>    mvn install  
+</code></pre>
+
+<p>and now lets' create a project with our archetype.</p>
+
+<pre><code>    mvn archetype:generate -DarchetypeCatalog=local  
+</code></pre>
+
+<p>Provide groupId, artifactId&hellip; when maven prompts and lo our project is created with our archetype.</p>
+]]></content>
+  </entry>
+  
+</feed>

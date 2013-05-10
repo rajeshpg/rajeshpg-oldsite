@@ -1,0 +1,357 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Scala Class Mixin and Composition - A Practical Example - me.thoughts.map(_ => blog)</title>
+  <meta name="author" content="Rajesh Pitty">
+
+  
+  <meta name="description" content="I am porting a part of a module written in Java to Scala. Lets consider the following 2 requirements alone. The second requirement is the one we are &hellip;">
+  <meta name="keywords" content="scala mixin, scala class inheritance and composition, dependency injection in scala">
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://rajeshpg.github.io/blog/2012/10/16/scala-class-mixin-and-composition-a-practical-example/">
+ <!--  <link href="/favicon.png" rel="icon"> -->
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="http://feeds.feedburner.com/rajeshpg" rel="alternate" title="me.thoughts.map(_ => blog)" type="application/atom+xml">
+  <link href='http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-1178930-4']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+  <link rel="author" href="https://plus.google.com/116621740117325086392"/>
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+ <!-- <div id="logo">
+  	<div id="logoLeft">{</div>
+  	<div id="logoText">mob</div>
+  	<div id="logoRight">}</div>
+  	<div class="clear"></div>
+  </div>-->
+  <h1><a href="/">me.thoughts.map(_ => blog)</a></h1>
+  
+  <div class="clear"></div>
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss email">
+  <li><a href="http://feeds.feedburner.com/rajeshpg" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+    <li><a href="http://feedburner.google.com/fb/a/mailverify?uri=rajeshpg&amp;loc=en_US" rel="subscribe-email" title="subscribe via email">Email</a></li>
+  
+</ul>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      
+        <h1 class="entry-title">Scala Class Mixin and Composition - a Practical Example</h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-10-16T11:58:00+05:30" pubdate data-updated="true">Oct 16<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>I am porting a part of a module written in Java to Scala. Lets consider the following 2 requirements alone. The second requirement is the one we are going to focus on.</p>
+
+<h2>Requirement:</h2>
+
+<pre><code>1. Read data from an excel file containing orders(material purchase order)
+2. Validate the data   
+    a. check for mandatory fields.  
+    b. check for allowed discount types.
+</code></pre>
+
+<p>The Java version is built using Spring IOC. The Scala version is built using the <a href="http://jonasboner.com/2008/10/06/real-world-scala-dependency-injection-di/">cake pattern</a> that  is similar to the dependency injection, but very light weight since it is built on the features available in the core of the Scala language.</p>
+
+<h3>The implementation</h3>
+
+<p>what we need is a <code>Validator</code> that <code>validate</code>s an object <code>T</code> based on a <code>Policy</code>.  So what we have now is the following <a href="http://www.scala-lang.org/node/126">traits</a>.</p>
+
+<div><script src='https://gist.github.com/3898533.js'></script>
+<noscript><pre><code></code></pre></noscript></div>
+
+
+<p>Considering the requirement 2.a, we need a validator that checks for mandatory fields in the excel sheet. We will create a <code>MandatoryFieldsValidator</code> that <code>validate</code>s every <a href="http://poi.apache.org/apidocs/org/apache/poi/ss/usermodel/Row.html"><code>Row</code></a> for presence of the mandatory fields.<br/>
+But there are n types of format for the order data in excel sheet. Every format has different mandatory fields.<br/>
+For example type 1 sheet has columns 1, 3, 6, 8 as mandatory fields, type 2 sheet has columns 0, 2, 5, 10 as mandatory fields.</p>
+
+<p>Hence we have  <code>MandatoryFieldsPolicy</code> with index of the mandatory fields and the <code>MandatoryFieldsValidator</code></p>
+
+<div><script src='https://gist.github.com/3898737.js'></script>
+<noscript><pre><code></code></pre></noscript></div>
+
+
+<p>and here is the actual mixin where we mix validator with policy based on the type of data in the excel sheet<br/>
+ <div><script src='https://gist.github.com/3898758.js'></script>
+<noscript><pre><code></code></pre></noscript></div></p>
+
+<p>In the <a href="http://rajeshpg.com/blog/2012/10/scala-class-mixin-and-composition-a-practical-example-contd/">next post</a> we&rsquo;ll see filtering data based on multiple validations.</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Rajesh Pitty</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-10-16T11:58:00+05:30" pubdate data-updated="true">Oct 16<span>th</span>, 2012</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/scala/'>scala</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://rajeshpg.github.io/blog/2012/10/16/scala-class-mixin-and-composition-a-practical-example/" data-via="_rajesh_pitty" data-counturl="http://rajeshpg.github.io/blog/2012/10/16/scala-class-mixin-and-composition-a-practical-example/" >Tweet</a>
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left articlenav" href="/blog/2012/10/10/learning-liftweb-part1/" title="Previous Post: learning liftweb part1">&laquo; learning liftweb part1</a>
+      
+      
+        <a class="basic-alignment right articlenav" href="/blog/2012/10/23/scala-class-mixin-and-composition-a-practical-example-contd/" title="Next Post: Scala Class Mixin and Composition - a practical example, contd...">Scala Class Mixin and Composition - a practical example, contd... &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    
+<section>
+  <h1>Stack Overflow</h1>
+  <a href="http://stackoverflow.com/users/558262/rajesh">
+  <img src="http://stackoverflow.com/users/flair/558262.png?theme=dark" width="208" height="58" alt="profile for rajesh at Stack Overflow, Q&amp;A for professional and enthusiast programmers" title="profile for rajesh at Stack Overflow, Q&amp;A for professional and enthusiast programmers">
+  </a>
+</section>
+
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2013/03/06/scala-parsers-combinators-example/">Scala Parsers Combinators Example</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/02/28/a-giter8-template-for-liftweb/">A Giter8 Template for Liftweb</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/02/07/liftweb-development-environment-setup/">Liftweb Development Environment Setup</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/01/25/creating-custom-maven-archetype/">Creating Custom Maven Archetype</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/10/23/scala-class-mixin-and-composition-a-practical-example-contd/">Scala Class Mixin and Composition - a practical example, contd...</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/rajeshpg">@rajeshpg</a> on GitHub
+  
+  <script type="text/javascript">
+    $.domReady(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'rajeshpg',
+            count: 2,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+
+<section class="googleplus">
+  <h1>
+    <a href="https://plus.google.com/116621740117325086392?rel=author">
+      <img src="http://www.google.com/images/icons/ui/gprofile_button-32.png" width="32" height="32">
+      Google+
+    </a>
+  </h1>
+</section>
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - Rajesh Pitty -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'rajeshpg';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://rajeshpg.github.io/blog/2012/10/16/scala-class-mixin-and-composition-a-practical-example/';
+        var disqus_url = 'http://rajeshpg.github.io/blog/2012/10/16/scala-class-mixin-and-composition-a-practical-example/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

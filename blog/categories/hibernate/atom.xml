@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: hibernate | me.thoughts.map(_ => blog)]]></title>
+  <link href="http://rajeshpg.github.io/blog/categories/hibernate/atom.xml" rel="self"/>
+  <link href="http://rajeshpg.github.io/"/>
+  <updated>2013-05-10T16:02:03+05:30</updated>
+  <id>http://rajeshpg.github.io/</id>
+  <author>
+    <name><![CDATA[Rajesh Pitty]]></name>
+    <email><![CDATA[rajesh@rajeshpg.com]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[HOW TO handle ORA-01795 in hibernate]]></title>
+    <link href="http://rajeshpg.github.io/blog/2012/09/07/how-to-handle-ora-01795-in-hibernate/"/>
+    <updated>2012-09-07T16:05:00+05:30</updated>
+    <id>http://rajeshpg.github.io/blog/2012/09/07/how-to-handle-ora-01795-in-hibernate</id>
+    <content type="html"><![CDATA[<p><strong>ORA-01795 maximum number of expressions in a list is 1000</strong> is an error that one encounters very rarely.</p>
+
+<p>But I did encounter recently, while querying a table using hibernate.</p>
+
+<p>Lets' assume an employee table needs to be queried for employee<strong>s</strong> (note the plural) based on employee code<strong>s</strong>.</p>
+
+<p>The query would be:</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='sql'><span class='line'><span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">tbl_employee</span> <span class="k">where</span> <span class="n">employee_code</span> <span class="k">in</span> <span class="p">(</span><span class="mi">1001</span><span class="p">,</span><span class="mi">1002</span><span class="o">&amp;</span><span class="n">hellip</span><span class="p">;</span><span class="mi">2003</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>But the query will result in error <strong>ORA-01795 maximum number of expressions in a list is 1000</strong>, <br/>
+particularly in Oracle(I havent tried in this other dbs').</p>
+
+<p>Thats' the problem statement, and lets see the possible solutions.</p>
+
+<ul>
+<li><p>Construct SQL/HQL(incase of hibernate) with <code>or</code> clause along with the <code>in</code> clause.<br/>
+The more or clausess the more it hits the performance. Thats' what i heard many SQL gurus told in blogs and forums.<br/>
+<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='sql'><span class='line'><span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">tbl_employee</span> <span class="k">where</span> <span class="n">employee_code</span> <span class="k">in</span> <span class="p">(</span><span class="mi">1001</span><span class="p">,</span><span class="mi">1002</span><span class="p">,</span><span class="o">&amp;</span><span class="n">hellip</span><span class="p">;</span><span class="mi">2000</span><span class="p">)</span> <span class="k">or</span> <span class="n">employee_code</span> <span class="k">in</span> <span class="p">(</span><span class="mi">2001</span><span class="p">,</span><span class="mi">2002</span><span class="p">,</span><span class="o">&amp;</span><span class="n">hellip</span><span class="p">;</span><span class="mi">3000</span><span class="p">)</span><span class="o">&lt;</span><span class="n">br</span><span class="o">/&gt;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p></li>
+<li><p>Construct Query using Hibernate Criteria(the reason for this post) <br/>
+The code creates SQL query thats similar to the one above.<br/>
+The Hibernate <a href="http://www.docjar.com/docs/api/org/hibernate/criterion/Disjunction.html">Disjunction</a>(line no 12) is used to group expressions in a single disjunction,<br/>
+i.e. <code>select * from ... where... in X or Y or Z</code><br/>
+X,Y,Z being conditions.<br/>
+<div><script src='https://gist.github.com/3665691.js'></script>
+<noscript><pre><code></code></pre></noscript></div>
+</p></li>
+</ul>
+
+]]></content>
+  </entry>
+  
+</feed>

@@ -1,0 +1,636 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[me.thoughts.map(_ => blog)]]></title>
+  <link href="http://rajeshpg.github.io/atom.xml" rel="self"/>
+  <link href="http://rajeshpg.github.io/"/>
+  <updated>2013-05-10T16:02:03+05:30</updated>
+  <id>http://rajeshpg.github.io/</id>
+  <author>
+    <name><![CDATA[Rajesh Pitty]]></name>
+    <email><![CDATA[rajesh@rajeshpg.com]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Scala Parsers Combinators Example]]></title>
+    <link href="http://rajeshpg.github.io/blog/2013/03/06/scala-parsers-combinators-example/"/>
+    <updated>2013-03-06T17:00:00+05:30</updated>
+    <id>http://rajeshpg.github.io/blog/2013/03/06/scala-parsers-combinators-example</id>
+    <content type="html"><![CDATA[<p>Here we are going to write a very simple parser that parses a very simple expression like <code>key=value</code>, for e.g. <code>name=Rajesh</code>
+and extract the required value <code>Rajesh</code> out of the expression.</p>
+
+<!-- more -->
+
+
+<p>
+If you are looking for an explanation for What a Parser is ? or What does Parser Combinator mean ?
+then jump to the <a href="#references">references</a> section for a list of links that i found explanatory and useful.</p>
+
+<p>Lets learn some basics about Scala Parser Combinator API</p>
+
+<p>OK lets&rsquo;s start</p>
+
+<p>To start with we are going to use JavaTokenParser</p>
+
+<h2>References</h2>
+
+<p><a href="http://en.wikipedia.org/wiki/Parser_combinator">Parser_Combinator wiki</a></p>
+
+<p><a href="http://www.codecommit.com/blog/scala/the-magic-behind-parser-combinators">http://www.codecommit.com/blog/scala/the-magic-behind-parser-combinators</a></p>
+
+<p><a href="http://oldfashionedsoftware.com/2008/08/16/easy-parsing-in-scala/">http://oldfashionedsoftware.com/2008/08/16/easy-parsing-in-scala/</a></p>
+
+<p><a href="http://henkelmann.eu/2011/01/13/an_introduction_to_scala_parser_combinators">http://henkelmann.eu/2011/01/13/an_introduction_to_scala_parser_combinators</a></p>
+
+<p><a href="http://henkelmann.eu/2011/01/28/an_introduction_to_scala_parser_combinators-part_2_literal_expressions">http://henkelmann.eu/2011/01/28/an_introduction_to_scala_parser_combinators-part_2_literal_expressions</a></p>
+
+<p><a href="http://henkelmann.eu/2011/01/29/an_introduction_to_scala_parser_combinators-part_3_unit_tests">http://henkelmann.eu/2011/01/29/an_introduction_to_scala_parser_combinators-part_3_unit_tests</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[A Giter8 Template for Liftweb]]></title>
+    <link href="http://rajeshpg.github.io/blog/2013/02/28/a-giter8-template-for-liftweb/"/>
+    <updated>2013-02-28T22:34:00+05:30</updated>
+    <id>http://rajeshpg.github.io/blog/2013/02/28/a-giter8-template-for-liftweb</id>
+    <content type="html"><![CDATA[<p>I have created a <a href="http://github.com/n8han/giter8">giter8</a> template <a href="https://github.com/rajeshpg/liftweb-twitter-bootstrap.g8">liftweb-twitter-bootstrap.g8</a> for <a href="http://liftweb.com">liftweb</a> applications with <a href="http://twitter.github.com/bootstrap/">twitter-bootstrap</a>.</p>
+
+<h4>Prerequisite</h4>
+
+<ul>
+<li><a href="https://github.com/n8han/conscript">Conscript</a></li>
+<li><a href="https://github.com/n8han/giter8">Giter8</a></li>
+</ul>
+
+
+<h4>Usage</h4>
+
+<pre><code>$ g8 rajeshpg/liftweb-twitter-bootstrap  
+
+template for liftweb app with twitter-bootstrap
+
+package [com.myliftwebapp]:
+name [My Liftweb App]:
+liftweb_version [2.4]:
+scala_version [2.9.1]:
+
+$ cd my-liftweb-app  
+</code></pre>
+
+<p>Eclipse users can run the following command and import the project.</p>
+
+<pre><code>$ mvn eclipse:eclipse  
+</code></pre>
+
+<p>IntelliJ users can run the following command and import the project.</p>
+
+<pre><code>$ mvn idea:idea  
+</code></pre>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Liftweb Development Environment Setup]]></title>
+    <link href="http://rajeshpg.github.io/blog/2013/02/07/liftweb-development-environment-setup/"/>
+    <updated>2013-02-07T15:52:00+05:30</updated>
+    <id>http://rajeshpg.github.io/blog/2013/02/07/liftweb-development-environment-setup</id>
+    <content type="html"><![CDATA[
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Creating Custom Maven Archetype]]></title>
+    <link href="http://rajeshpg.github.io/blog/2013/01/25/creating-custom-maven-archetype/"/>
+    <updated>2013-01-25T12:29:00+05:30</updated>
+    <id>http://rajeshpg.github.io/blog/2013/01/25/creating-custom-maven-archetype</id>
+    <content type="html"><![CDATA[<p><a href="http://maven.apache.org/">Maven</a> makes it easy to create a project from a skeleton using the archetypes. But most of the time many of the archetype does not work out of the box.</p>
+
+<p>Having a skeleton project with most of the default configurations always comes in handy. It saves time creating/writing configuration files for Spring, Hibernate&hellip; etc.</p>
+
+<p>How about creating an archetype for our project and have it in our local Maven repository or publish it in public repository or in github ?</p>
+
+<p>[grab your favourite beverage, this is a little long post.]</p>
+
+<!-- more -->
+
+
+<p>Lets create an archetype for an existing project that i created to learn <a href="http://liftweb.org">liftweb</a>.</p>
+
+<p>To create an archetype from an existing project we have to run the following command in the folder where our <code>pom.xml</code> is.</p>
+
+<p><img class="right" src="http://rajeshpg.github.io/images/create-maven-archetype/maven-generated-folders.png" width="300" height="425" title="Maven generated folders" ></p>
+
+<pre><code>mvn generate:create-from-project  
+</code></pre>
+
+<p>The maven command creates the archetype source in <code>app_folder/target/generated-sources/archetype</code> as shown &mdash;&gt;</p>
+
+<p>The archetype folder contains a <code>pom.xml</code>(shown below) for the archetype and the following folders inside <code>src/main/resources</code> folder.</p>
+
+<ul>
+<li><code>archetype-resources</code> containing the entire package of the project
+
+<ul>
+<li>the root main package <code>src/main/scala</code> containing core packages <code>comet, snippet, model...</code>, and other folders <code>src/main/webapp</code> and <code>src/main/resources</code></li>
+<li>the root test package <code>src/main/test</code></li>
+<li><code>pom.xml</code> &ndash; containing dependency details for the project to be created out of this archetype (not for the archetype).</li>
+</ul>
+</li>
+<li><code>META-INF/maven</code> containing <code>archetype-metadata.xml</code> that has project folder structure details and folder inclusion/exclusion filters.</li>
+</ul>
+
+
+<p>To create a proper archetype, we should make few changes in the directory structure, so it is good to copy the src and target folders and the pom.xml to another folder liftweb-archetype-blank.</p>
+
+<p><img class="left" src="http://rajeshpg.github.io/images/create-maven-archetype/maven-archetype-blank-1.png" width="260" height="210"></p>
+
+<h5>Step 1.</h5>
+
+<p>Move core package <code>(comet, snippet, model)</code> out of the root package <code>(com.appname)</code> to the src folder <code>(src/main/scala)</code> as shown in the left image.</p>
+
+<p>This step is required so that when we use the archetype to create a new project, maven will copy the core package in to custom root package that we specify in groupid <code>(com.anotherapp)</code>.</p>
+
+<h5>Step 2.</h5>
+
+<p>Edit <code>archetype-metadata.xml</code> located in <code>META-INF/maven</code> folder.<br/>
+Here is the xml created by maven for this project.</p>
+
+<div><script src='https://gist.github.com/4620148.js'></script>
+<noscript><pre><code></code></pre></noscript></div>
+
+
+<p>and here is the modified xml.</p>
+
+<p>The attribute <code>packaged="true"</code> in <code>fileset</code> tag containing <code>src/main/scala/</code> directory entry tells maven to copy the core package <code>(comet, snippet, model)</code> in to root package <code>(com.anotherapp)</code> while creating a project.</p>
+
+<p>The exclusion filter for bootstrap folder in line number 12</p>
+
+<pre><code>  &lt;excludes&gt;
+    &lt;exclude&gt;bootstrap/**&lt;/exclude&gt;
+  &lt;/excludes&gt;
+</code></pre>
+
+<p>instructs maven not to copy bootstrap folder in to the core package as per liftweb package structure requirements.</p>
+
+<p>The inclusion filter in line number 20</p>
+
+<pre><code>  &lt;includes&gt;
+    &lt;include&gt;bootstrap/**/*.scala&lt;/include&gt;
+  &lt;/includes&gt;
+</code></pre>
+
+<p>instructs maven to retain the bootstrap folder in src/main/scala as per liftweb convention.</p>
+
+<div><script src='https://gist.github.com/4620589.js'></script>
+<noscript><pre><code></code></pre></noscript></div>
+
+
+<p>pom.xml for our archetype created by maven is</p>
+
+<div><script src='https://gist.github.com/4621304.js'></script>
+<noscript><pre><code></code></pre></noscript></div>
+
+
+<p>we are done with our archetype and lets&#8217; install it in our local repository.</p>
+
+<pre><code>    mvn install  
+</code></pre>
+
+<p>and now lets&#8217; create a project with our archetype.</p>
+
+<pre><code>    mvn archetype:generate -DarchetypeCatalog=local  
+</code></pre>
+
+<p>Provide groupId, artifactId&hellip; when maven prompts and lo our project is created with our archetype.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Scala Class Mixin and Composition - a practical example, contd...]]></title>
+    <link href="http://rajeshpg.github.io/blog/2012/10/23/scala-class-mixin-and-composition-a-practical-example-contd/"/>
+    <updated>2012-10-23T11:10:00+05:30</updated>
+    <id>http://rajeshpg.github.io/blog/2012/10/23/scala-class-mixin-and-composition-a-practical-example-contd</id>
+    <content type="html"><![CDATA[<p>In the <a href="http://rajeshpg.com/blog/2012/10/scala-class-mixin-and-composition-a-practical-example/">previous post</a> we saw how to a create validator with a policy and filter data read from an excel.</p>
+
+<p>Lets create another validator to check for discount types of a sales order and validate the sales data using the two validators and filter the data.</p>
+
+<p>What we need is a <code>DiscountTypeValidator</code> to check for discount types allowed(<code>Policy</code>)</p>
+
+<div><script src='https://gist.github.com/3937107.js'></script>
+<noscript><pre><code></code></pre></noscript></div>
+
+
+<p>here is the updated <code>process</code> method</p>
+
+<div><script src='https://gist.github.com/3937206.js'></script>
+<noscript><pre><code></code></pre></noscript></div>
+
+
+<p>in line 12 we create another anonymous class for <code>DiscountTypeValidator</code> with a <code>Policy</code> <code>DiscountTypeAllowed</code> with a list <code>allowedDiscountTypes</code> that holds a list of discount type codes.</p>
+
+<p><code>DiscountTypeValidator</code> takes column index of the discount type as Int parameter. The <code>validator</code> method checks whether the discount type mentioned in the excel is allowed or not and then returns a list of booleans.</p>
+
+<p>So now we have list of data <code>worksheet</code> from excel  and lists of booleans <code>mfValidationResult</code> and  <code>discTypeValidationResult</code> that represents the validation result of <code>Validator</code>s for each row in the excel.</p>
+
+<p>In line 15 we create a list of tuple containing the row object and one of the validation result,say <code>mfValidationResult</code> using  <code>zip</code> method of <code>scala.List</code>(actually trait <code>IterableLike</code>).</p>
+
+<p><code>validationResult</code> looks like this</p>
+
+<pre><code>List((org.apache.poi.hssf.usermodel.HSSFRow@2200d5,true), (org.apache.poi.hssf.usermodel.HSSFRow@64ab4d,false),...)  
+</code></pre>
+
+<p>We have to zip the  <code>discTypeValidationResult</code> also with <code>validationResult</code> using <code>zipResults</code> method.</p>
+
+<p>There is no convenient method in scala to zip a tuple say (1,2) with another value say 3 so that we get (1,2,3) instead of ((1,2),3).</p>
+
+<p>The snippet <code>zipResults(validationResult, discTypeValidationResult)</code> combines the validation results and gives a simple tuple containing the row object the validation result on the object.</p>
+
+<p>Finally <code>validationResult.filter(_._2).map(_._1)</code> filters the sales data based on the validation result and returns the valid data.</p>
+
+<p>Scala mixin and compostion is very comprehensive and convenient compared to Spring IoC.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Scala Class Mixin and Composition - A Practical Example]]></title>
+    <link href="http://rajeshpg.github.io/blog/2012/10/16/scala-class-mixin-and-composition-a-practical-example/"/>
+    <updated>2012-10-16T11:58:00+05:30</updated>
+    <id>http://rajeshpg.github.io/blog/2012/10/16/scala-class-mixin-and-composition-a-practical-example</id>
+    <content type="html"><![CDATA[<p>I am porting a part of a module written in Java to Scala. Lets consider the following 2 requirements alone. The second requirement is the one we are going to focus on.</p>
+
+<h2>Requirement:</h2>
+
+<pre><code>1. Read data from an excel file containing orders(material purchase order)
+2. Validate the data   
+    a. check for mandatory fields.  
+    b. check for allowed discount types.
+</code></pre>
+
+<p>The Java version is built using Spring IOC. The Scala version is built using the <a href="http://jonasboner.com/2008/10/06/real-world-scala-dependency-injection-di/">cake pattern</a> that  is similar to the dependency injection, but very light weight since it is built on the features available in the core of the Scala language.</p>
+
+<h3>The implementation</h3>
+
+<p>what we need is a <code>Validator</code> that <code>validate</code>s an object <code>T</code> based on a <code>Policy</code>.  So what we have now is the following <a href="http://www.scala-lang.org/node/126">traits</a>.</p>
+
+<div><script src='https://gist.github.com/3898533.js'></script>
+<noscript><pre><code></code></pre></noscript></div>
+
+
+<p>Considering the requirement 2.a, we need a validator that checks for mandatory fields in the excel sheet. We will create a <code>MandatoryFieldsValidator</code> that <code>validate</code>s every <a href="http://poi.apache.org/apidocs/org/apache/poi/ss/usermodel/Row.html"><code>Row</code></a> for presence of the mandatory fields.<br/>
+But there are n types of format for the order data in excel sheet. Every format has different mandatory fields.<br/>
+For example type 1 sheet has columns 1, 3, 6, 8 as mandatory fields, type 2 sheet has columns 0, 2, 5, 10 as mandatory fields.</p>
+
+<p>Hence we have  <code>MandatoryFieldsPolicy</code> with index of the mandatory fields and the <code>MandatoryFieldsValidator</code></p>
+
+<div><script src='https://gist.github.com/3898737.js'></script>
+<noscript><pre><code></code></pre></noscript></div>
+
+
+<p>and here is the actual mixin where we mix validator with policy based on the type of data in the excel sheet<br/>
+ <div><script src='https://gist.github.com/3898758.js'></script>
+<noscript><pre><code></code></pre></noscript></div></p>
+
+<p>In the <a href="http://rajeshpg.com/blog/2012/10/scala-class-mixin-and-composition-a-practical-example-contd/">next post</a> we&rsquo;ll see filtering data based on multiple validations.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[learning liftweb part1]]></title>
+    <link href="http://rajeshpg.github.io/blog/2012/10/10/learning-liftweb-part1/"/>
+    <updated>2012-10-10T15:42:00+05:30</updated>
+    <id>http://rajeshpg.github.io/blog/2012/10/10/learning-liftweb-part1</id>
+    <content type="html"><![CDATA[
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[HOW TO handle ORA-01795 in hibernate]]></title>
+    <link href="http://rajeshpg.github.io/blog/2012/09/07/how-to-handle-ora-01795-in-hibernate/"/>
+    <updated>2012-09-07T16:05:00+05:30</updated>
+    <id>http://rajeshpg.github.io/blog/2012/09/07/how-to-handle-ora-01795-in-hibernate</id>
+    <content type="html"><![CDATA[<p><strong>ORA-01795 maximum number of expressions in a list is 1000</strong> is an error that one encounters very rarely.</p>
+
+<p>But I did encounter recently, while querying a table using hibernate.</p>
+
+<p>Lets&#8217; assume an employee table needs to be queried for employee<strong>s</strong> (note the plural) based on employee code<strong>s</strong>.</p>
+
+<p>The query would be:</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='sql'><span class='line'><span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">tbl_employee</span> <span class="k">where</span> <span class="n">employee_code</span> <span class="k">in</span> <span class="p">(</span><span class="mi">1001</span><span class="p">,</span><span class="mi">1002</span><span class="p">...</span><span class="mi">2003</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>But the query will result in error <strong>ORA-01795 maximum number of expressions in a list is 1000</strong>, <br/>
+particularly in Oracle(I havent tried in this other dbs&#8217;).</p>
+
+<p>Thats&#8217; the problem statement, and lets see the possible solutions.</p>
+
+<ul>
+<li>Construct SQL/HQL(incase of hibernate) with <code>or</code> clause along with the <code>in</code> clause.<br/>
+The more or clausess the more it hits the performance. Thats&#8217; what i heard many SQL gurus told in blogs and forums.</li>
+</ul>
+
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='sql'><span class='line'><span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">tbl_employee</span> <span class="k">where</span> <span class="n">employee_code</span> <span class="k">in</span> <span class="p">(</span><span class="mi">1001</span><span class="p">,</span><span class="mi">1002</span><span class="p">,...</span><span class="mi">2000</span><span class="p">)</span> <span class="k">or</span> <span class="n">employee_code</span> <span class="k">in</span> <span class="p">(</span><span class="mi">2001</span><span class="p">,</span><span class="mi">2002</span><span class="p">,...</span><span class="mi">3000</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>Construct Query using Hibernate Criteria(the reason for this post) <br/>
+The code creates SQL query thats similar to the one above.<br/>
+The Hibernate <a href="http://www.docjar.com/docs/api/org/hibernate/criterion/Disjunction.html">Disjunction</a>(line no 12) is used to group expressions in a single disjunction,<br/>
+i.e. <code>select * from ... where... in X or Y or Z</code><br/>
+X,Y,Z being conditions.</li>
+</ul>
+
+
+<div><script src='https://gist.github.com/3665691.js'></script>
+<noscript><pre><code></code></pre></noscript></div>
+
+
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[maximum subarray problem solved using scala]]></title>
+    <link href="http://rajeshpg.github.io/blog/2012/09/07/maximum-subarray-problem-solved-using-scala/"/>
+    <updated>2012-09-07T14:52:00+05:30</updated>
+    <id>http://rajeshpg.github.io/blog/2012/09/07/maximum-subarray-problem-solved-using-scala</id>
+    <content type="html"><![CDATA[<p>my <a href="http://rerun.me" title="rerun">friend</a> <a href="http://twitter.com/arunma" title="Arun in Twitter">Arun</a> wrote a <a href="http://rerun.me/blog/2012/08/30/maximum-continuous-subarray-problem-kandanes-algorithm/" title="Kadanes' Alogrithm">blog post</a> on solving  <a href="http://en.wikipedia.org/wiki/Maximum_subarray_problem" title="maximum Subarray problem">Maximum subarray problem</a> using Java and asked if i could give it a try.<br/>
+So here it is in Scala.</p>
+
+<div><script src='https://gist.github.com/3528839.js'></script>
+<noscript><pre><code></code></pre></noscript></div>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Learning a new programming language]]></title>
+    <link href="http://rajeshpg.github.io/blog/2011/09/23/learning-a-new-programming-language/"/>
+    <updated>2011-09-23T13:49:33+05:30</updated>
+    <id>http://rajeshpg.github.io/blog/2011/09/23/learning-a-new-programming-language</id>
+    <content type="html"><![CDATA[<blockquote><p>Learn at least one new language every year. Different languages solve the same problems in different ways. By learning several different approaches, you can help broaden your thinking and avoid getting stuck in a rut.</p><footer><strong>Andy Hunt</strong> <cite>Dave Thomas - the Pragmatic Programmer</cite></footer></blockquote>
+
+
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[a simple todo list manager becoming complex]]></title>
+    <link href="http://rajeshpg.github.io/blog/2011/05/10/a-simple-todo-list-manager-becoming-complex/"/>
+    <updated>2011-05-10T15:43:25+05:30</updated>
+    <id>http://rajeshpg.github.io/blog/2011/05/10/a-simple-todo-list-manager-becoming-complex</id>
+    <content type="html"><![CDATA[<p>Recently i started a todo list manager project as a way to learn ruby on
+rails. Though this is not my first rails project, am still in the learning phase.
+I wanted to create a simple to-do list manager with UI as simple as twitter.
+One textbox to write the task to be done and thats it. I did not want to have a calendar link to select due date , no options to
+select the priority&hellip; etc.
+I want to capture maximum details possible in the single text box.
+Later i can extract the details using regular expression in the controller
+First it was a little difficult for me to get the right regex for the string
+patterns,later with a (first)question posted in <a href="http://stackoverflow.com/questions/5933498/regular-%0Aexpression-in-ruby-for-strings-with-multiple-patterns">stackoverflow.com</a> i got the solution for
+that.</p>
+
+<p>thanks to <a href="http://stackoverflow.com/users/276070/jens">@Jens</a> and
+<a href="http://stackoverflow.com/users/314166/sawa">@sawa</a> for providing the right
+regex for my need.
+Still i keep getting ideas to make it as easy as possible for a user to enter
+his/her todo task with all details in a single text box, but each idea is making the code more complex.</p>
+
+<p>I am working on this project with a very little spare time that i get, so it
+may take sometime to make it online and publish the code in github.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[using github thru dropbox]]></title>
+    <link href="http://rajeshpg.github.io/blog/2011/05/05/using-git-thru-dropbox/"/>
+    <updated>2011-05-05T11:19:21+05:30</updated>
+    <id>http://rajeshpg.github.io/blog/2011/05/05/using-git-thru-dropbox</id>
+    <content type="html"><![CDATA[<p>A simple setup to use dropbox as a git repository, that found in <a href="http://stackoverflow.com/questions/1960799/using-gitdropbox-together-effectively">stackoverflow</a>.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>~/project $ git init
+</span><span class='line'>~/project $ git add .
+</span><span class='line'>~/project $ git commit -m "first commit"
+</span><span class='line'>~/project $ cd ~/Dropbox/git  
+</span><span class='line'>~/Dropbox/git $ mkdir project.git
+</span><span class='line'>~/Dropbox/git $ cd project.git
+</span><span class='line'>~/Dropbox/git $ git init --bare
+</span><span class='line'>~/Dropbox/git $ cd ~/project  
+</span><span class='line'>~/project $ git remote add origin ~/Dropbox/git/project.git
+</span><span class='line'>~/project $ git push origin master</span></code></pre></td></tr></table></div></figure>
+
+
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[move wordpress blog from root to subdirectory]]></title>
+    <link href="http://rajeshpg.github.io/blog/2009/06/01/move-wordpress-blog-from-root-to-subdirectory/"/>
+    <updated>2009-06-01T19:26:47+05:30</updated>
+    <id>http://rajeshpg.github.io/blog/2009/06/01/move-wordpress-blog-from-root-to-subdirectory</id>
+    <content type="html"><![CDATA[<p>I am quite sure you will get a lot of tutorials for this topic.</p>
+
+<p>try this [<a href="http://www.google.co.in/search?q=move+wordpress+blog+from+root+to+subdirectory">http://www.google.co.in/search?q=move+wordpress+blog+from+root+to+subdirectory</a>]
+(<a href="http://www.google.co.in/search?q=move+wordpress+blog+from+root+to+subdirectory">http://www.google.co.in/search?q=move+wordpress+blog+from+root+to+subdirectory</a>) but that didn solve one particular problem,redirecting the old url to new url.</p>
+
+<p>Earlier i had my blog in the root directory on my domain
+<a href="http://www.rajeshpg.com">http://www.rajeshpg.com</a>.i moved my blog to a
+subdirectory <a href="http://www.rajeshpg.com/blog">http://www.rajeshpg.com/blog</a>.
+i reinstalled wordpress in the subdirectory, and import my earlier posts.</p>
+
+<p>The problem is that the old url for a post (probably indexed by google) should
+be redirected to new url.</p>
+
+<p>eg:-<br/>
+<a href="http://www.rajeshpg.com/2007/01/javaxservletservletexception-path-loginlayout-does-not-start-with-a-character/  ">http://www.rajeshpg.com/2007/01/javaxservletservletexception-path-loginlayout-does-not-start-with-a-character/  </a>
+should be redirected to  <br/>
+<a href="http://www.rajeshpg.com/**blog**/2007/01/javaxservletservletexception-path-loginlayout-does-not-start-with-a-character/">http://www.rajeshpg.com/**blog**/2007/01/javaxservletservletexception-path-loginlayout-does-not-start-with-a-character/</a></p>
+
+<p>After googling for an hour i got the solution.
+Modify your .htaccess file(or create one) in the root directory with this code.</p>
+
+<pre><code>    RewriteEngine On RewriteBase / RewriteRule ^(\d*)/(\d*)/(.*)$ http://yourdomainname.com/blog/$1/$2/$3 [L,R=301]
+</code></pre>
+
+<p><code>(\d\*)</code> represents a sequence of numbers.<br/>
+<code>(.\*)</code> represents sequence of characters.</p>
+
+<p>note:&ndash; this solution works only for the urls of /year/month/title pattern of
+wordpress blog.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[HOWTO install , configure and run Resin web server in Ubuntu/Kubuntu]]></title>
+    <link href="http://rajeshpg.github.io/blog/2007/08/09/howto-install-configure-and-run-resin-web-server-in-ubuntukubuntu/"/>
+    <updated>2007-08-09T18:57:41+05:30</updated>
+    <id>http://rajeshpg.github.io/blog/2007/08/09/howto-install-configure-and-run-resin-web-server-in-ubuntukubuntu</id>
+    <content type="html"><![CDATA[<p>Installation Steps:</p>
+
+<ol>
+<li>Download <a href="http://www.caucho.com/download/index.xtp">Resin</a> from <a href="http://www.caucho.com">Caucho</a>.</li>
+<li>Unzip the .tar.gz file.</li>
+<li>Open a command prompt and navigate into the resin folder.</li>
+<li>In the command prompt type <strong>./configure</strong><br/>
+if u get an error<br/>
+<strong>checking for C compiler default output file name&hellip;
+configure: error: C compiler cannot create executables</strong>.<br/>
+the solution is<br/>
+for Ubuntu/Kubuntu on 32 bit processor : instal glibc-devel.<br/>
+for Ubuntu/Kubuntu on 64 bit processor : instal libc6-dev-amd64.</li>
+<li>in the command prompt type <strong>make</strong> (if your ./configure command was succesful.)</li>
+<li>in the command prompt type <strong>make install</strong>.</li>
+</ol>
+
+
+<p>If everything goes fine till here then the installation of Resin web server is
+complete.<br/>
+To start the server , in the command prompt navigate into the bin folder and
+the type the command <strong>./httpd.sh</strong>.<br/>
+Open your favourite web browser and type **<a href="http://localhost:8080**.You">http://localhost:8080**.You</a> should
+get the welcome page.<br/>
+If you get an error that &ldquo;tools.jar is not in the classpath&rdquo; , open resin.conf
+file placed inside conf folder and replace the tag</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="nt">&lt;java</span> <span class="na">compiler=</span><span class="s">&quot;internal&quot;</span> <span class="na">compiler-args=</span><span class="s">&quot;&quot;</span><span class="nt">/&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>with</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="nt">&lt;java</span> <span class="na">compiler=</span><span class="s">&#39;javac&#39;</span><span class="nt">/&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>This should solve the problem.</p>
+
+<p>Restart the server and check in the web browser , you should get the welcome
+page.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[HOWTO use Threads in JEE web applications]]></title>
+    <link href="http://rajeshpg.github.io/blog/2007/02/15/howto-use-threads-in-jee-web-applications/"/>
+    <updated>2007-02-15T17:55:47+05:30</updated>
+    <id>http://rajeshpg.github.io/blog/2007/02/15/howto-use-threads-in-jee-web-applications</id>
+    <content type="html"><![CDATA[<p>We all know that , we should not use Java Threads in our web applications, but
+what if , there is a situation where we have to do two or more time consuming
+tasks simultaneoulsy.</p>
+
+<p>IBM and BEA together has given a solution for this problem 3 years back , i
+wonder how many of us know this . I came to know about this just 6 months
+back.</p>
+
+<p>The solution to our concurrency problem in web applications is the WorkManager
+API. WorkManager API helps us to execute several tasks in parallel with one
+another.</p>
+
+<p>i am sorry , i havent used the api , so i couldn give a sample code :(  But,
+these links will help you know more about the WorkManager API <a href="http://www.javaworld.com/ja%0Avaworld/jw-01-2007/jw-01-workmgr.html">http://www.java
+world.com/javaworld/jw-01-2007/jw-01-workmgr.html</a> <a href="http://www.jcp.org/en/jsr/detail?id=237">WorkManager API &mdash;&ndash; JSR
+237</a> <a href="http://dev2dev.bea.com/pub/a/2005/05/parallel_tasks%0A.html">http://dev2dev.bea.com/pub/a/20
+05/05/parallel_tasks.html</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[javax.servlet.ServletException: Path loginLayout does not start with a "/" character]]></title>
+    <link href="http://rajeshpg.github.io/blog/2007/01/23/javaxservletservletexception-path-loginlayout-does-not-start-with-a-character/"/>
+    <updated>2007-01-23T18:24:00+05:30</updated>
+    <id>http://rajeshpg.github.io/blog/2007/01/23/javaxservletservletexception-path-loginlayout-does-not-start-with-a-character</id>
+    <content type="html"><![CDATA[<p>&hellip; its been a year and a half , i have used Struts. A week back we got a
+project and we decided to use Struts 1.3.5 since Struts 2.0 is still in beta.
+While i was trying forward response to a Tile forward instead of directly
+redirecting to a jsp , i got an exception javax.servlet.ServletException: Path
+loginLayout doesnot start with a &ldquo;/&rdquo; character after googling for half an hour
+i got the solution pre-requsite : download
+<a href="http://struts.apache.org/download.cgi#struts135">Struts1.3.5-all.zip</a></p>
+
+<p>Step 1. add chain-config.xml to WEB-INF folder inside your project you can
+find this file in /struts-1.3.5-all/struts-1.3.5/src/tiles/src
+/main/resources/org/apache/struts/tiles</p>
+
+<p>Step 2. add the following init-param tag to Action Servlet configuration in
+web.xml ** &lt;init-param> &lt;param-name>chainConfig&lt;/param-name> &lt;param-value</p>
+
+<blockquote><p>/WEB-INF/chain-config.xml&lt;/param-value> &lt;/init-param> ** Step 3. add commons-
+chain-1.1.jar to your project library.</p></blockquote>
+
+<p>this should solve the problem.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[HOWTO pass request and response from one servlet to another servlet ΓÇª]]></title>
+    <link href="http://rajeshpg.github.io/blog/2007/01/16/howto-pass-request-and-response-from-one-servlet-to-another-servlet/"/>
+    <updated>2007-01-16T12:19:00+05:30</updated>
+    <id>http://rajeshpg.github.io/blog/2007/01/16/howto-pass-request-and-response-from-one-servlet-to-another-servlet</id>
+    <content type="html"><![CDATA[<p>&hellip;that sounds simple for a java/j2ee programmer&hellip;</p>
+
+<p><strong>RequestDispatcher rd = request.getRequestDispatcher&#8221;/jsps/login.jsp&#8221;);</strong><br/>
+<strong>rd.forward(request,response); </strong><br/>
+<strong><br/>
+</strong>but the scenario is &hellip;<br/>
+i have to pass the request and response from a servlet in one web application
+to another servlet or jsp in another web application deployed in the same
+server &hellip;</p>
+
+<p>lets say we have two web applications SabreNews and
+<a href="http://beanpicks.blogspot.com/">BeanPicks</a></p>
+
+<p>and we have to pass the request and response object from a Servlet or a jsp in
+SabreNews to a resource(Servlet or a jsp) in BeanPicks</p>
+
+<p>how should we go about ?</p>
+
+<p>here is the solution :</p>
+
+<p><strong>ServletContext beanPicksContext = getServletContext().getContext(&ldquo;/BeanPicks&rdquo;);<br/>
+beanPicksContext.getRequestDispatcher(&ldquo;/beanPicks/jsps/displayBlog.jsp&rdquo;).forwa
+rd(request,response); </strong></p>
+
+<p><strong>getServletContext()</strong> is the method declared in the <strong>ServletConfig</strong> object .As the method name goes by , it <strong>returns</strong> the <strong>ServletContext object </strong>with which a <strong>Servlet can communicate with the ServletContainer </strong>in which the webapplication runs.<br/>
+so now we have got the line to talk with the ServletContainer which also holds
+other web applications and BeanPicks too .</p>
+
+<p>Now , we have to <strong>ask for the BeanPicks&rsquo;s context </strong>and we get the BeanPicks
+context <strong>by calling getContext(&ldquo;/BeanPicks&rdquo;)</strong></p>
+
+<p>we have got the context <strong>and</strong> the rest is to <strong>get the
+RequestDispathcher(getRequestDispatcher(java.lang.String path))</strong> on a
+particular resource (displayBlog.jsp) <strong>and forward the request and response
+</strong></p>
+
+<p>i am using the code snippet i have given above , in my web application and it
+is working fine for me .if there is another way doing it , please blog it and
+let me know.</p>
+
+<p>please refer to <a href="http://java.sun.com/j2ee/1.4/docs/api/index.html">J2EE 1.4 api
+docs</a> for brief information
+about ServletConfig , ServletResponse and GenericServlet objects</p>
+]]></content>
+  </entry>
+  
+</feed>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: liftweb | me.thoughts.map(_ => blog)]]></title>
+  <link href="http://rajeshpg.github.io/blog/categories/liftweb/atom.xml" rel="self"/>
+  <link href="http://rajeshpg.github.io/"/>
+  <updated>2013-05-10T16:02:03+05:30</updated>
+  <id>http://rajeshpg.github.io/</id>
+  <author>
+    <name><![CDATA[Rajesh Pitty]]></name>
+    <email><![CDATA[rajesh@rajeshpg.com]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[A Giter8 Template for Liftweb]]></title>
+    <link href="http://rajeshpg.github.io/blog/2013/02/28/a-giter8-template-for-liftweb/"/>
+    <updated>2013-02-28T22:34:00+05:30</updated>
+    <id>http://rajeshpg.github.io/blog/2013/02/28/a-giter8-template-for-liftweb</id>
+    <content type="html"><![CDATA[<p>I have created a <a href="http://github.com/n8han/giter8">giter8</a> template <a href="https://github.com/rajeshpg/liftweb-twitter-bootstrap.g8">liftweb-twitter-bootstrap.g8</a> for <a href="http://liftweb.com">liftweb</a> applications with <a href="http://twitter.github.com/bootstrap/">twitter-bootstrap</a>.</p>
+
+<h4>Prerequisite</h4>
+
+<ul>
+<li><a href="https://github.com/n8han/conscript">Conscript</a></li>
+<li><a href="https://github.com/n8han/giter8">Giter8</a></li>
+</ul>
+
+
+<h4>Usage</h4>
+
+<pre><code>$ g8 rajeshpg/liftweb-twitter-bootstrap  
+
+template for liftweb app with twitter-bootstrap
+
+package [com.myliftwebapp]:
+name [My Liftweb App]:
+liftweb_version [2.4]:
+scala_version [2.9.1]:
+
+$ cd my-liftweb-app  
+</code></pre>
+
+<p>Eclipse users can run the following command and import the project.</p>
+
+<pre><code>$ mvn eclipse:eclipse  
+</code></pre>
+
+<p>IntelliJ users can run the following command and import the project.</p>
+
+<pre><code>$ mvn idea:idea  
+</code></pre>
+]]></content>
+  </entry>
+  
+</feed>

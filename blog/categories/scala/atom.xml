@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: scala | me.thoughts.map(_ => blog)]]></title>
+  <link href="http://rajeshpg.github.io/blog/categories/scala/atom.xml" rel="self"/>
+  <link href="http://rajeshpg.github.io/"/>
+  <updated>2013-05-10T16:02:03+05:30</updated>
+  <id>http://rajeshpg.github.io/</id>
+  <author>
+    <name><![CDATA[Rajesh Pitty]]></name>
+    <email><![CDATA[rajesh@rajeshpg.com]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Scala Parsers Combinators Example]]></title>
+    <link href="http://rajeshpg.github.io/blog/2013/03/06/scala-parsers-combinators-example/"/>
+    <updated>2013-03-06T17:00:00+05:30</updated>
+    <id>http://rajeshpg.github.io/blog/2013/03/06/scala-parsers-combinators-example</id>
+    <content type="html"><![CDATA[<p>Here we are going to write a very simple parser that parses a very simple expression like <code>key=value</code>, for e.g. <code>name=Rajesh</code>
+and extract the required value <code>Rajesh</code> out of the expression.</p>
+
+<!-- more -->
+
+
+<p>
+If you are looking for an explanation for What a Parser is ? or What does Parser Combinator mean ?
+then jump to the <a href="#references">references</a> section for a list of links that i found explanatory and useful.</p>
+
+<p>Lets learn some basics about Scala Parser Combinator API</p>
+
+<p>OK lets&rsquo;s start</p>
+
+<p>To start with we are going to use JavaTokenParser</p>
+
+<h2>References</h2>
+
+<p><a href="http://en.wikipedia.org/wiki/Parser_combinator">Parser_Combinator wiki</a></p>
+
+<p><a href="http://www.codecommit.com/blog/scala/the-magic-behind-parser-combinators">http://www.codecommit.com/blog/scala/the-magic-behind-parser-combinators</a></p>
+
+<p><a href="http://oldfashionedsoftware.com/2008/08/16/easy-parsing-in-scala/">http://oldfashionedsoftware.com/2008/08/16/easy-parsing-in-scala/</a></p>
+
+<p><a href="http://henkelmann.eu/2011/01/13/an_introduction_to_scala_parser_combinators">http://henkelmann.eu/2011/01/13/an_introduction_to_scala_parser_combinators</a></p>
+
+<p><a href="http://henkelmann.eu/2011/01/28/an_introduction_to_scala_parser_combinators-part_2_literal_expressions">http://henkelmann.eu/2011/01/28/an_introduction_to_scala_parser_combinators-part_2_literal_expressions</a></p>
+
+<p><a href="http://henkelmann.eu/2011/01/29/an_introduction_to_scala_parser_combinators-part_3_unit_tests">http://henkelmann.eu/2011/01/29/an_introduction_to_scala_parser_combinators-part_3_unit_tests</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Scala Class Mixin and Composition - a practical example, contd...]]></title>
+    <link href="http://rajeshpg.github.io/blog/2012/10/23/scala-class-mixin-and-composition-a-practical-example-contd/"/>
+    <updated>2012-10-23T11:10:00+05:30</updated>
+    <id>http://rajeshpg.github.io/blog/2012/10/23/scala-class-mixin-and-composition-a-practical-example-contd</id>
+    <content type="html"><![CDATA[<p>In the <a href="http://rajeshpg.com/blog/2012/10/scala-class-mixin-and-composition-a-practical-example/">previous post</a> we saw how to a create validator with a policy and filter data read from an excel.</p>
+
+<p>Lets create another validator to check for discount types of a sales order and validate the sales data using the two validators and filter the data.</p>
+
+<p>What we need is a <code>DiscountTypeValidator</code> to check for discount types allowed(<code>Policy</code>)</p>
+
+<p><div><script src='https://gist.github.com/3937107.js'></script>
+<noscript><pre><code></code></pre></noscript></div>
+</p>
+
+<p>here is the updated <code>process</code> method</p>
+
+<p><div><script src='https://gist.github.com/3937206.js'></script>
+<noscript><pre><code></code></pre></noscript></div>
+</p>
+
+<p>in line 12 we create another anonymous class for <code>DiscountTypeValidator</code> with a <code>Policy</code> <code>DiscountTypeAllowed</code> with a list <code>allowedDiscountTypes</code> that holds a list of discount type codes.</p>
+
+<p><code>DiscountTypeValidator</code> takes column index of the discount type as Int parameter. The <code>validator</code> method checks whether the discount type mentioned in the excel is allowed or not and then returns a list of booleans.</p>
+
+<p>So now we have list of data <code>worksheet</code> from excel  and lists of booleans <code>mfValidationResult</code> and  <code>discTypeValidationResult</code> that represents the validation result of <code>Validator</code>s for each row in the excel.</p>
+
+<p>In line 15 we create a list of tuple containing the row object and one of the validation result,say <code>mfValidationResult</code> using  <code>zip</code> method of <code>scala.List</code>(actually trait <code>IterableLike</code>).</p>
+
+<p><code>validationResult</code> looks like this</p>
+
+<pre><code>List((org.apache.poi.hssf.usermodel.HSSFRow@2200d5,true), (org.apache.poi.hssf.usermodel.HSSFRow@64ab4d,false),...)  
+</code></pre>
+
+<p>We have to zip the  <code>discTypeValidationResult</code> also with <code>validationResult</code> using <code>zipResults</code> method.</p>
+
+<p>There is no convenient method in scala to zip a tuple say (1,2) with another value say 3 so that we get (1,2,3) instead of ((1,2),3).</p>
+
+<p>The snippet <code>zipResults(validationResult, discTypeValidationResult)</code> combines the validation results and gives a simple tuple containing the row object the validation result on the object.</p>
+
+<p>Finally <code>validationResult.filter(_._2).map(_._1)</code> filters the sales data based on the validation result and returns the valid data.</p>
+
+<p>Scala mixin and compostion is very comprehensive and convenient compared to Spring IoC.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Scala Class Mixin and Composition - A Practical Example]]></title>
+    <link href="http://rajeshpg.github.io/blog/2012/10/16/scala-class-mixin-and-composition-a-practical-example/"/>
+    <updated>2012-10-16T11:58:00+05:30</updated>
+    <id>http://rajeshpg.github.io/blog/2012/10/16/scala-class-mixin-and-composition-a-practical-example</id>
+    <content type="html"><![CDATA[<p>I am porting a part of a module written in Java to Scala. Lets consider the following 2 requirements alone. The second requirement is the one we are going to focus on.</p>
+
+<h2>Requirement:</h2>
+
+<pre><code>1. Read data from an excel file containing orders(material purchase order)
+2. Validate the data   
+    a. check for mandatory fields.  
+    b. check for allowed discount types.
+</code></pre>
+
+<p>The Java version is built using Spring IOC. The Scala version is built using the <a href="http://jonasboner.com/2008/10/06/real-world-scala-dependency-injection-di/">cake pattern</a> that  is similar to the dependency injection, but very light weight since it is built on the features available in the core of the Scala language.</p>
+
+<h3>The implementation</h3>
+
+<p>what we need is a <code>Validator</code> that <code>validate</code>s an object <code>T</code> based on a <code>Policy</code>.  So what we have now is the following <a href="http://www.scala-lang.org/node/126">traits</a>.<br/>
+<div><script src='https://gist.github.com/3898533.js'></script>
+<noscript><pre><code></code></pre></noscript></div>
+</p>
+
+<p>Considering the requirement 2.a, we need a validator that checks for mandatory fields in the excel sheet. We will create a <code>MandatoryFieldsValidator</code> that <code>validate</code>s every <a href="http://poi.apache.org/apidocs/org/apache/poi/ss/usermodel/Row.html"><code>Row</code></a> for presence of the mandatory fields.<br/>
+But there are n types of format for the order data in excel sheet. Every format has different mandatory fields.<br/>
+For example type 1 sheet has columns 1, 3, 6, 8 as mandatory fields, type 2 sheet has columns 0, 2, 5, 10 as mandatory fields.</p>
+
+<p>Hence we have  <code>MandatoryFieldsPolicy</code> with index of the mandatory fields and the <code>MandatoryFieldsValidator</code></p>
+
+<p><div><script src='https://gist.github.com/3898737.js'></script>
+<noscript><pre><code></code></pre></noscript></div>
+</p>
+
+<p>and here is the actual mixin where we mix validator with policy based on the type of data in the excel sheet<br/>
+ <div><script src='https://gist.github.com/3898758.js'></script>
+<noscript><pre><code></code></pre></noscript></div>
+</p>
+
+<p>In the <a href="http://rajeshpg.com/blog/2012/10/scala-class-mixin-and-composition-a-practical-example-contd/">next post</a> we&rsquo;ll see filtering data based on multiple validations.</p>
+]]></content>
+  </entry>
+  
+</feed>
