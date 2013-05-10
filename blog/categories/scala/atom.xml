@@ -4,7 +4,7 @@
   <title><![CDATA[Category: scala | me.thoughts.map(_ => blog)]]></title>
   <link href="http://rajeshpg.github.io/blog/categories/scala/atom.xml" rel="self"/>
   <link href="http://rajeshpg.github.io/"/>
-  <updated>2013-05-10T16:02:03+05:30</updated>
+  <updated>2013-05-10T16:19:01+05:30</updated>
   <id>http://rajeshpg.github.io/</id>
   <author>
     <name><![CDATA[Rajesh Pitty]]></name>
@@ -12,43 +12,6 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
-  
-  <entry>
-    <title type="html"><![CDATA[Scala Parsers Combinators Example]]></title>
-    <link href="http://rajeshpg.github.io/blog/2013/03/06/scala-parsers-combinators-example/"/>
-    <updated>2013-03-06T17:00:00+05:30</updated>
-    <id>http://rajeshpg.github.io/blog/2013/03/06/scala-parsers-combinators-example</id>
-    <content type="html"><![CDATA[<p>Here we are going to write a very simple parser that parses a very simple expression like <code>key=value</code>, for e.g. <code>name=Rajesh</code>
-and extract the required value <code>Rajesh</code> out of the expression.</p>
-
-<!-- more -->
-
-
-<p>
-If you are looking for an explanation for What a Parser is ? or What does Parser Combinator mean ?
-then jump to the <a href="#references">references</a> section for a list of links that i found explanatory and useful.</p>
-
-<p>Lets learn some basics about Scala Parser Combinator API</p>
-
-<p>OK lets&rsquo;s start</p>
-
-<p>To start with we are going to use JavaTokenParser</p>
-
-<h2>References</h2>
-
-<p><a href="http://en.wikipedia.org/wiki/Parser_combinator">Parser_Combinator wiki</a></p>
-
-<p><a href="http://www.codecommit.com/blog/scala/the-magic-behind-parser-combinators">http://www.codecommit.com/blog/scala/the-magic-behind-parser-combinators</a></p>
-
-<p><a href="http://oldfashionedsoftware.com/2008/08/16/easy-parsing-in-scala/">http://oldfashionedsoftware.com/2008/08/16/easy-parsing-in-scala/</a></p>
-
-<p><a href="http://henkelmann.eu/2011/01/13/an_introduction_to_scala_parser_combinators">http://henkelmann.eu/2011/01/13/an_introduction_to_scala_parser_combinators</a></p>
-
-<p><a href="http://henkelmann.eu/2011/01/28/an_introduction_to_scala_parser_combinators-part_2_literal_expressions">http://henkelmann.eu/2011/01/28/an_introduction_to_scala_parser_combinators-part_2_literal_expressions</a></p>
-
-<p><a href="http://henkelmann.eu/2011/01/29/an_introduction_to_scala_parser_combinators-part_3_unit_tests">http://henkelmann.eu/2011/01/29/an_introduction_to_scala_parser_combinators-part_3_unit_tests</a></p>
-]]></content>
-  </entry>
   
   <entry>
     <title type="html"><![CDATA[Scala Class Mixin and Composition - a practical example, contd...]]></title>
