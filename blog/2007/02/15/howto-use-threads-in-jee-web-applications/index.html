@@ -43,6 +43,7 @@ what if , there is a situation where we have to do two or more time &hellip;">
       var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
     })();
   </script>
+<script type="text/javascript" src="/javascripts/ga_social_tracking.js"></script>
 
 
   <link rel="author" href="https://plus.google.com/116621740117325086392"/>
@@ -322,6 +323,7 @@ world.com/javaworld/jw-01-2007/jw-01-workmgr.html</a> <a href="http://www.jcp.or
       twitterWidgets.type = 'text/javascript';
       twitterWidgets.async = true;
       twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      twitterWidgets.onload = _ga.trackTwitter;
       document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
     })();
   </script>
